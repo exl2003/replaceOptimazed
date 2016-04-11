@@ -4,7 +4,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "": "src/",
+            "Task\\" : ".mage/tasks"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -16,6 +17,7 @@
             "Tests\\": "tests/"
         }
     },
+    
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.0.*",
@@ -30,7 +32,8 @@
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0"
+        "symfony/phpunit-bridge": "^3.0",
+        "andres-montanez/magallanes": "^1.0"
     },
     "scripts": {
         "post-install-cmd": [
