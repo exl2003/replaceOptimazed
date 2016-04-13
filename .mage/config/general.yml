@@ -1,0 +1,10 @@
+# global settings
+name: MultiNetwork
+email: exl2003@mail.ru
+notifications: true
+logging: true
+maxlogs: 30
+ssh_needs_tty: false
+scm:
+  type: git
+  url:  https://github.com/exl2003/replaceOptimazed.git

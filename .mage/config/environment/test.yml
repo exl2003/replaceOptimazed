@@ -1,0 +1,50 @@
+#test
+deployment:
+  owner: azarubin:users
+  user: azarubin
+  from: ./
+  to: /srv/work01.z
+  excludes:
+    - ./var
+#    - ./vendor
+releases:
+  enabled: true
+  max: 10
+  symlink: current
+  directory: releases
+hosts:
+  - work02.z
+  - work03.z
+work02.z:
+ deployment:
+    user: azarubin
+    to:	  /srv/work01.z
+work03.z:
+ deployment:
+    user: azarubin
+    to:	  /srv/work01.z    
+tasks:
+  pre-deploy:
+   - scm/update
+#   - composer/copy-vendors
+#   - composer/install
+  on-deploy:
+    - filesystem/link-shared-files:
+        shared: shared
+        linked_folders:
+          - vendor
+  post-release:
+    - filesystem/apply-facls:
+        #recursive:false
+        acl_param: "o:rwx"
+        folders: [ ./var/, ./var/cache/   ]  
+        
+    - filesystem/link-shared-files:
+        linked_folders:
+            - ./var
+#            - ./vendor
+#        linked_files:
+#            - tmp_var/_local.php
+        shared: shared
+        linking_strategy: absolute        
+  post-deploy:
