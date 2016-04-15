@@ -82,7 +82,7 @@ class StatSpeedCommand extends ContainerAwareCommand
         foreach ($this->servers as $server) {
             if ( $server != $myHost ){
                 //echo "$server\n";
-                $url = "http://{$server}/app_dev.php/file-speed-download";
+                $url = "http://{$server}/app.php/file-speed-download";
                 $this->getUrl($url);
             }
             
